@@ -1,18 +1,19 @@
 import { Notify } from 'notiflix';
 import { nanoid } from 'nanoid';
 import { Form, Label, BtnAdd } from './ContactForm.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from '../../redux/operations';
+import {
+  useAddContactMutation,
+  useFetchContactsQuery,
+} from '../../redux/contactsSlice';
 
 export const ContactForm = () => {
-  const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
+  const { data: contacts } = useFetchContactsQuery();
+  const [addContact] = useAddContactMutation();
 
   const nameInputId = nanoid();
   const numberInputId = nanoid();
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.elements.name.value;
@@ -30,7 +31,7 @@ export const ContactForm = () => {
 
     matchName
       ? Notify.info(`${name} is already in contacts`)
-      : dispatch(addContact({ ...newContact }));
+      : await addContact({ ...newContact });
 
     form.reset();
   };
