@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import { Contact, Button } from './ContactItem.styled';
-import { deleteContact } from 'redux/operations';
-import { useDispatch } from 'react-redux';
-import { useDeleteMaterialMutation } from '../../redux/contactsSlice';
+import { useDeleteContactMutation } from '../../redux/contactsSlice';
 
 export const ContactItem = ({ name, phone, id }) => {
-  // const dispatch = useDispatch();
-  const [deleteContact] = useDeleteMaterialMutation();
-
-  const handleDelete = async id => await deleteContact(id);
+  const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   return (
     <Contact>
       {name}: {phone}
-      <Button type="button" id={id} onClick={handleDelete}>
+      <Button
+        type="button"
+        id={id}
+        onClick={() => deleteContact(id)}
+        disabled={isLoading}
+      >
         Delete
       </Button>
     </Contact>

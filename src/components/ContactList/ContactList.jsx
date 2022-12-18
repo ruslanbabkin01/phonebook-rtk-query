@@ -5,19 +5,19 @@ import { useFetchContactsQuery } from '../../redux/contactsSlice';
 import { selectFilter } from 'redux/selectors';
 
 export const ContactList = () => {
-  const { filter } = useSelector(selectFilter);
-  const { data: contacts } = useFetchContactsQuery();
-  console.log(filter);
+  const { data: contacts = [], error, isLoading } = useFetchContactsQuery();
+  const filter = useSelector(selectFilter);
+  const totalContacts = contacts.length;
 
-  const normalizedFilter = filter.toLowerCase();
+  const normalizedFilter = filter.toLowerCase().trim();
 
   const visibleContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter)
   );
 
-  const totalContacts = visibleContacts.length;
   return (
     <Contacts>
+      {isLoading && !error && <b>Request in progress...</b>}
       {visibleContacts.map(({ phone, name, id }) => (
         <ContactItem key={id} phone={phone} name={name} id={id} />
       ))}
