@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://ruslanbabkin01.github.io/phonebook-rtk-query/",
   "dependencies": {
-    "@emotion/css": "^11.10.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@redux-devtools/extension": "^3.2.3",
@@ -13,9 +12,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
-    "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
-    "modern-normalize": "^1.1.0",
     "nanoid": "^4.0.0",
     "notiflix": "^3.2.5",
     "prop-types": "^15.8.1",
@@ -23,10 +20,7 @@
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
-    "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "shortid": "^2.2.16",
-    "styled-components": "^5.3.6",
     "styled-system": "^5.1.5",
     "web-vitals": "^2.1.3"
   },

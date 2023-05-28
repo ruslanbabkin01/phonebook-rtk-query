@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://63972e3786d04c76338d8491.mockapi.io/api/v1';
+axios.defaults.baseURL = process.env.REACT_APP_API_KEY;
 
 export async function fetchContactsAPI() {
   const response = await axios.get('/contacts');
