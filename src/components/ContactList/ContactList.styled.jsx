@@ -7,7 +7,7 @@ export const Contacts = styled.ul`
   gap: 10px;
 `;
 
-export const TotalContacts = styled.p`
+export const Total = styled.p`
   margin-top: 12px;
   font-size: ${props => props.theme.fontSizes.medium};
   font-weight: ${props => props.theme.fontWeight.medium};

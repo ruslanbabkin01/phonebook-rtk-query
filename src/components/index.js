@@ -1,3 +1,5 @@
 export * from './Filter/Filter';
 export * from './ContactList/ContactList';
-export * from './ContactForm/ContactForm.jsx';
+
+// if export default
+export { default } from './ContactForm/ContactForm.jsx';

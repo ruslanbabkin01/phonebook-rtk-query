@@ -6,7 +6,7 @@ import {
   useFetchContactsQuery,
 } from '../../redux/contactsSlice';
 
-export const ContactForm = () => {
+const ContactForm = () => {
   const { data: contacts } = useFetchContactsQuery();
   const [addContact] = useAddContactMutation();
 
@@ -64,3 +64,5 @@ export const ContactForm = () => {
     </Form>
   );
 };
+
+export default ContactForm;

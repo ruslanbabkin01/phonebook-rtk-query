@@ -1,4 +1,5 @@
-import { ContactForm, ContactList, Filter } from './components/index';
+import ContactForm from 'components/ContactForm/ContactForm';
+import { ContactList, Filter } from './components/index';
 import { Box } from './styles/index';
 
 export const App = () => {

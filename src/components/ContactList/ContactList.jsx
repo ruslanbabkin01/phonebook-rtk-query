@@ -1,4 +1,4 @@
-import { Contacts, TotalContacts } from './ContactList.styled';
+import { Contacts, Total } from './ContactList.styled';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
 import { useFetchContactsQuery } from '../../redux/contactsSlice';
@@ -21,7 +21,7 @@ export const ContactList = () => {
       {visibleContacts.map(({ phone, name, id }) => (
         <ContactItem key={id} phone={phone} name={name} id={id} />
       ))}
-      <TotalContacts>Total contacts: {totalContacts}</TotalContacts>
+      <Total>Total contacts: {totalContacts}</Total>
     </Contacts>
   );
 };
