@@ -9,7 +9,7 @@ export const Contacts = styled.ul`
 
 export const Total = styled.p`
   margin-top: 12px;
-  font-size: ${props => props.theme.fontSizes.medium};
-  font-weight: ${props => props.theme.fontWeight.medium};
+  font-size: ${p => p.theme.fontSizes[4]}px;
+  font-weight: ${props => props.theme.fontWeights.medium};
   color: ${props => props.theme.colors.ocean};
 `;

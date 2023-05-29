@@ -1,10 +1,16 @@
-// import 'modern-normalize';
+import 'modern-normalize';
 import { css } from '@emotion/react';
 
 export const GlobalStyles = css`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
+  }
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
   }
 
   body {
@@ -17,6 +23,7 @@ export const GlobalStyles = css`
     min-height: 100vh;
 
     font-style: normal;
+    line-height: 1.2;
   }
 
   code {
@@ -58,5 +65,42 @@ export const GlobalStyles = css`
     display: block;
     max-width: 100%;
     height: auto;
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+
+  blockquote,
+  q {
+    quotes: none;
+  }
+
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 `;

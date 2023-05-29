@@ -1,19 +1,26 @@
 import ContactForm from 'components/ContactForm/ContactForm';
-import { ContactList, Filter } from './components/index';
-import { Box } from './styles/index';
+import { Box, ContactList, Container, Filter } from './components/index';
+import { Heading } from 'theme-ui';
 
 export const App = () => {
   return (
-    <Box as="main" mx="auto" width="300px">
-      <Box as="h1" fontSize={30}>
-        Phonebook
+    <Container>
+      <Box as="main">
+        {/* <Box as="h1" fontSize={30}>
+          Phonebook
+        </Box> */}
+        <Heading>Phonebook </Heading>
+
+        <ContactForm />
+
+        <Box as="h2" fontSize={24}>
+          Contacts
+        </Box>
+
+        <Filter />
+
+        <ContactList />
       </Box>
-      <ContactForm />
-      <Box as="h2" fontSize={24}>
-        Contacts
-      </Box>
-      <Filter />
-      <ContactList />
-    </Box>
+    </Container>
   );
 };

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import {
-  color,
-  space,
+  color, //color and background-color
+  space, //margin padding
   layout,
   flexbox,
   grid,
