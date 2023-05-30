@@ -10,7 +10,6 @@ import {
 import { Heading } from 'theme-ui';
 import { FcContacts } from 'react-icons/fc';
 import { ToastContainer } from 'react-toastify';
-import { Toaster } from 'react-hot-toast';
 
 export const App = () => {
   return (
