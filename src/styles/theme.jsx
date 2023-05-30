@@ -92,5 +92,5 @@ export const theme = Object.freeze({
   transitions: {
     cubicBezier: '250ms cubic-bezier(0.7, 0.98, 0.86, 0.98)',
   },
-  zIndices: [-1, 1, 10, 50, 100, 1000],
+  zIndices: [-1, 10, 50, 100, 1000],
 });

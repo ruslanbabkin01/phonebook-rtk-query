@@ -1,47 +1,27 @@
-import { nanoid } from 'nanoid';
-import { Label, BtnAdd, ErrorText } from './ContactForm.styled';
 import {
   useAddContactMutation,
   useFetchContactsQuery,
 } from '../../redux/contactsSlice';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { validationSchema } from './validateSchema';
+import {
+  Label,
+  BtnAdd,
+  ErrorText,
+  FieldInput,
+  FormStyle,
+} from './ContactForm.styled';
 import { toast } from 'react-toastify';
+import { Box } from 'components/Box';
 
 const ContactForm = () => {
   const { data: contacts } = useFetchContactsQuery();
   const [addContact] = useAddContactMutation();
 
-  const nameInputId = nanoid();
-  const numberInputId = nanoid();
-
   const initialValues = {
     name: '',
     phone: '',
   };
-
-  // const handleSubmit = async e => {
-  //   e.preventDefault();
-  //   const form = e.currentTarget;
-  //   const name = form.elements.name.value;
-  //   const phone = form.elements.phone.value;
-
-  //   const newContact = {
-  //     name,
-  //     phone,
-  //   };
-
-  //   const currentName = name;
-  //   const matchName = contacts.some(
-  //     contact => contact.name.toLowerCase() === currentName.toLowerCase()
-  //   );
-
-  //   matchName
-  //     ? Notify.info(`${name} is already in contacts`)
-  //     : await addContact({ ...newContact });
-
-  //   form.reset();
-  // };
 
   function setContact(name, phone) {
     const contact = {
@@ -60,12 +40,12 @@ const ContactForm = () => {
         autoClose: 3000,
       });
     } else {
-      addContact(contact);
       toast.success(`${name} added to phonebook`);
+      addContact(contact);
     }
   }
 
-  const handleSubmit = async (values, actions) => {
+  const handleSubmit = async ({ values }, actions) => {
     const name = values.name;
     const phone = values.phone;
 
@@ -74,35 +54,36 @@ const ContactForm = () => {
     actions.resetForm();
   };
 
+  const FormError = ({ name }) => {
+    return (
+      <ErrorMessage
+        name={name}
+        render={message => <ErrorText>{message}</ErrorText>}
+      />
+    );
+  };
+
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form>
-        <Label htmlFor={nameInputId}>
-          Name
-          <Field
-            type="text"
-            name="name"
-            placeholder="John Jonson"
-            id={nameInputId}
-          />
-          <ErrorMessage component={ErrorText} name="name" />
-        </Label>
-        <Label htmlFor={numberInputId}>
-          Phone
-          <Field
-            type="tel"
-            name="phone"
-            placeholder="+380XXXXXXXXX"
-            id={numberInputId}
-          />
-          <ErrorMessage component={ErrorText} name="phone" />
-        </Label>
+      <FormStyle>
+        <Label htmlFor="name">Name</Label>
+        <Box mb={4} position="relative">
+          <FieldInput type="text" name="name" placeholder="John Jonson" />
+          <FormError name="name" />
+        </Box>
+
+        <Label htmlFor="phone">Phone</Label>
+        <Box mb={4} position="relative">
+          <FieldInput type="tel" name="phone" placeholder="+380XXXXXXXXX" />
+          <FormError name="phone" />
+        </Box>
+
         <BtnAdd type="submit">Add contact</BtnAdd>
-      </Form>
+      </FormStyle>
     </Formik>
   );
 };

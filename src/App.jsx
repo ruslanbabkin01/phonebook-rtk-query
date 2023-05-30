@@ -42,7 +42,7 @@ export const App = () => {
 
       <Box as="section" py={4}>
         <Container>
-          <Box as="h2" fontSize={24} textAlign="center">
+          <Box as="h2" fontSize={24} textAlign="center" mb="12px">
             Contacts
           </Box>
 

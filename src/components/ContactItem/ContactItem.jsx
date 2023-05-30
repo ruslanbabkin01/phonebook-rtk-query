@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Contact, Button } from './ContactItem.styled';
 import { useDeleteContactMutation } from '../../redux/contactsSlice';
+import { AiTwotoneDelete } from 'react-icons/ai';
 
 export const ContactItem = ({ name, phone, id }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
@@ -14,7 +15,7 @@ export const ContactItem = ({ name, phone, id }) => {
         onClick={() => deleteContact(id)}
         disabled={isLoading}
       >
-        Delete
+        <AiTwotoneDelete size={20} />
       </Button>
     </Contact>
   );

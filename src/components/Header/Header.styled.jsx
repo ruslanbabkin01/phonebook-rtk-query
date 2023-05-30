@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
 export const WrapperBox = styled.header`
+  position: sticky;
   top: 0;
   left: 0;
-  position: sticky;
-  z-index: ${p => p.theme.zIndices[6]};
+  z-index: ${p => p.theme.zIndices[4]};
   display: flex;
   justify-content: center;
   align-items: center;
