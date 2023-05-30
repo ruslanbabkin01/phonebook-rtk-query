@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
-  border: 2px solid #000;
-  margin: 20px 0;
-  padding: 12px;
+  border: ${p => p.theme.borders.md} ${p => p.theme.colors.black};
+  border-radius: ${p => p.theme.radii.md};
+  padding: ${p => p.theme.space[4]}px;
+  margin-top: ${p => p.theme.space[3]}px;
 `;
 
 export const Label = styled.label`
@@ -21,6 +22,6 @@ export const BtnAdd = styled.button`
 
   :hover,
   :focus {
-    background-color: ${props => props.theme.colors.accent};
+    background-color: ${p => p.theme.colors.accent};
   }
 `;
