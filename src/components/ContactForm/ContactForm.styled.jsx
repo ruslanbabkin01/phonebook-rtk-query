@@ -9,19 +9,25 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   display: block;
-  font-size: 20px;
-  & + & {
-    margin-top: 12px;
-  }
+  font-size: ${p => p.theme.fontSizes[3]}px;
+  margin-bottom: ${p => p.theme.space[4]}px;
 `;
 
 export const BtnAdd = styled.button`
-  margin-top: 12px;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: ${p => p.theme.radii.md};
+  background-color: ${p => p.theme.colors.gray};
+  border: ${p => p.theme.borders.none};
+  padding: ${p => p.theme.space[2]}px;
+  color: ${p => p.theme.colors.muted};
 
-  :hover,
-  :focus {
-    background-color: ${p => p.theme.colors.accent};
+  :hover {
+    background-color: ${p => p.theme.colors.highlight};
+    color: ${p => p.theme.colors.text};
   }
+`;
+
+export const ErrorText = styled.p`
+  font-size: ${p => p.theme.fontSizes[1]}px;
+  color: ${p => p.theme.colors.error};
+  margin-top: ${p => p.theme.space[2]}px;
 `;

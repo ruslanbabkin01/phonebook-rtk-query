@@ -1,12 +1,12 @@
-import { Notify } from 'notiflix';
 import { nanoid } from 'nanoid';
-import { Label, BtnAdd } from './ContactForm.styled';
+import { Label, BtnAdd, ErrorText } from './ContactForm.styled';
 import {
   useAddContactMutation,
   useFetchContactsQuery,
 } from '../../redux/contactsSlice';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { validationSchema } from './validateSchema';
+import { toast } from 'react-toastify';
 
 const ContactForm = () => {
   const { data: contacts } = useFetchContactsQuery();
@@ -43,23 +43,33 @@ const ContactForm = () => {
   //   form.reset();
   // };
 
-  const handleSubmit = async (values, actions) => {
-    const name = values.name;
-    const phone = values.phone;
-
-    const newContact = {
+  function setContact(name, phone) {
+    const contact = {
       name,
       phone,
     };
 
-    const currentName = name;
+    const currentName = name.toLowerCase();
     const matchName = contacts.some(
-      contact => contact.name.toLowerCase() === currentName.toLowerCase()
+      ({ name }) => name.toLowerCase() === currentName.toLowerCase()
     );
 
-    matchName
-      ? Notify.info(`${name} is already in contacts`)
-      : await addContact({ ...newContact });
+    if (matchName) {
+      toast.warn(`${name} is already in contacts`, {
+        position: 'top-center',
+        autoClose: 3000,
+      });
+    } else {
+      addContact(contact);
+      toast.success(`${name} added to phonebook`);
+    }
+  }
+
+  const handleSubmit = async (values, actions) => {
+    const name = values.name;
+    const phone = values.phone;
+
+    setContact(name, phone);
 
     actions.resetForm();
   };
@@ -79,17 +89,17 @@ const ContactForm = () => {
             placeholder="John Jonson"
             id={nameInputId}
           />
-          <ErrorMessage component="span" name="name" />
+          <ErrorMessage component={ErrorText} name="name" />
         </Label>
         <Label htmlFor={numberInputId}>
-          Number
+          Phone
           <Field
             type="tel"
             name="phone"
             placeholder="+380XXXXXXXXX"
             id={numberInputId}
           />
-          <ErrorMessage component="span" name="phone" />
+          <ErrorMessage component={ErrorText} name="phone" />
         </Label>
         <BtnAdd type="submit">Add contact</BtnAdd>
       </Form>

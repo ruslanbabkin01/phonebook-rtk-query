@@ -12,5 +12,6 @@ export const validationSchema = object({
   phone: string()
     .matches(/^\+380\d{9}$/, 'Example: "+380xxxxxxxxx"')
     .min(13, 'Phone number should be 13 digits')
-    .max(13, 'Phone number should be 13 digits'),
+    .max(13, 'Phone number should be 13 digits')
+    .required('Phone is required'),
 });
