@@ -9,7 +9,6 @@ import {
 } from './components/index';
 import { Heading } from 'theme-ui';
 import { FcContacts } from 'react-icons/fc';
-import { ToastContainer } from 'react-toastify';
 
 const App: React.FC = () => {
   return (
@@ -47,7 +46,6 @@ const App: React.FC = () => {
         </Container>
       </Box>
       <Footer />
-      <ToastContainer />
     </Box>
   );
 };

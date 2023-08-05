@@ -4,7 +4,7 @@ import { IContact, IDataForm } from '../../@types/types';
 export const contactsApi = createApi({
   reducerPath: 'contacts',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_API_KEY,
+    baseUrl: 'https://63972e3786d04c76338d8491.mockapi.io/api/v1',
   }),
   tagTypes: ['Contacts'],
   endpoints: builder => ({
