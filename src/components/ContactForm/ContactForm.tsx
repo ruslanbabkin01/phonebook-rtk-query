@@ -1,7 +1,7 @@
 import {
   useAddContactMutation,
   useFetchContactsQuery,
-} from '../../redux/contactsSlice';
+} from '../../redux/contactsApi';
 import { Formik, ErrorMessage } from 'formik';
 import { validationSchema } from './validateSchema';
 import {
@@ -14,23 +14,28 @@ import {
 import { toast } from 'react-toastify';
 import { Box } from 'components/Box';
 
+interface IValues {
+  name: string;
+  phone: string;
+}
+
 const ContactForm = () => {
   const { data: contacts } = useFetchContactsQuery();
   const [addContact] = useAddContactMutation();
 
-  const initialValues = {
+  const initialValues: IValues = {
     name: '',
     phone: '',
   };
 
-  function setContact(name, phone) {
+  function setContact(name: string, phone: string) {
     const contact = {
       name,
       phone,
     };
 
     const currentName = name.toLowerCase();
-    const matchName = contacts.some(
+    const matchName = contacts?.some(
       ({ name }) => name.toLowerCase() === currentName.toLowerCase()
     );
 
@@ -45,16 +50,15 @@ const ContactForm = () => {
     }
   }
 
-  const handleSubmit = async ({ values }, actions) => {
+  const handleSubmit = async (values: IValues, actions: any) => {
     const name = values.name;
     const phone = values.phone;
 
     setContact(name, phone);
-
     actions.resetForm();
   };
 
-  const FormError = ({ name }) => {
+  const FormError = ({ name }: { name: string }) => {
     return (
       <ErrorMessage
         name={name}

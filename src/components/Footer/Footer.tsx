@@ -1,8 +1,11 @@
-import React from 'react';
 import { Wrapp } from './Footer.styled';
 import { Container } from 'components';
 
-export const Footer = ({ children }) => {
+interface IFooterProps {
+  children?: React.ReactNode;
+}
+
+export const Footer = ({ children }: IFooterProps) => {
   return (
     <Wrapp>
       <Container>{children}</Container>

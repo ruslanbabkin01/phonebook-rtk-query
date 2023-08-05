@@ -7,7 +7,7 @@ export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
 
-  function changeFilter(e) {
+  function changeFilter(e: React.ChangeEvent<HTMLInputElement>) {
     const inputValue = e.target.value;
     dispatch(setFilter(inputValue));
   }

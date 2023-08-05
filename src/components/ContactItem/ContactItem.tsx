@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import { Contact, Button } from './ContactItem.styled';
-import { useDeleteContactMutation } from '../../redux/contactsSlice';
+import { useDeleteContactMutation } from '../../redux/contactsApi';
 import { AiTwotoneDelete } from 'react-icons/ai';
+import { IContact } from '../../../@types/types';
 
-export const ContactItem = ({ name, phone, id }) => {
+export const ContactItem = ({ name, phone, id }: IContact) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   return (
@@ -19,10 +19,4 @@ export const ContactItem = ({ name, phone, id }) => {
       </Button>
     </Contact>
   );
-};
-
-ContactItem.propTypes = {
-  phone: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
 };

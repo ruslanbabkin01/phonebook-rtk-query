@@ -11,11 +11,10 @@ import { Heading } from 'theme-ui';
 import { FcContacts } from 'react-icons/fc';
 import { ToastContainer } from 'react-toastify';
 
-export const App = () => {
+const App: React.FC = () => {
   return (
     <Box as="main">
       <Header />
-
       <Box as="section" py={4}>
         <Container>
           <Box
@@ -35,25 +34,22 @@ export const App = () => {
               Phonebook
             </Heading>
           </Box>
-
           <ContactForm />
         </Container>
       </Box>
-
       <Box as="section" py={4}>
         <Container>
           <Box as="h2" fontSize={24} textAlign="center" mb="12px">
             Contacts
           </Box>
-
           <Filter />
-
           <ContactList />
         </Container>
       </Box>
-
       <Footer />
       <ToastContainer />
     </Box>
   );
 };
+
+export default App;

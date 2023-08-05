@@ -1,6 +1,8 @@
-const breakpoints = ['320', '768', '1280'];
+import { Theme } from '@emotion/react';
 
-export const theme = Object.freeze({
+const breakpoints: string[] = ['320', '768', '1280'];
+
+export const theme: Theme = Object.freeze({
   colors: {
     text: '#000',
     background: '#fff',

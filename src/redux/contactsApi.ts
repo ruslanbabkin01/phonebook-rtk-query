@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IContact, IDataForm } from '../../@types/types';
 
 export const contactsApi = createApi({
   reducerPath: 'contacts',
@@ -7,11 +8,11 @@ export const contactsApi = createApi({
   }),
   tagTypes: ['Contacts'],
   endpoints: builder => ({
-    fetchContacts: builder.query({
+    fetchContacts: builder.query<IContact[], void>({
       query: () => `/contacts`,
       providesTags: ['Contacts'],
     }),
-    addContact: builder.mutation({
+    addContact: builder.mutation<any, IDataForm>({
       query: data => ({
         url: '/contacts',
         method: 'POST',
@@ -19,7 +20,7 @@ export const contactsApi = createApi({
       }),
       invalidatesTags: ['Contacts'],
     }),
-    deleteContact: builder.mutation({
+    deleteContact: builder.mutation<any, string>({
       query: id => ({
         url: `/contacts/${id}`,
         method: 'DELETE',

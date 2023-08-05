@@ -1,8 +1,9 @@
 import { Contacts, Total } from './ContactList.styled';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
-import { useFetchContactsQuery } from '../../redux/contactsSlice';
+import { useFetchContactsQuery } from '../../redux/contactsApi';
 import { selectFilter } from 'redux/selectors';
+import { IContact } from '../../../@types/types';
 
 export const ContactList = () => {
   const { data: contacts = [], error, isLoading } = useFetchContactsQuery();
@@ -18,7 +19,7 @@ export const ContactList = () => {
   return (
     <Contacts>
       {isLoading && !error && <b>Request in progress...</b>}
-      {visibleContacts.map(({ phone, name, id }) => (
+      {visibleContacts.map(({ phone, name, id }: IContact) => (
         <ContactItem key={id} phone={phone} name={name} id={id} />
       ))}
       <Total>Total contacts: {totalContacts}</Total>

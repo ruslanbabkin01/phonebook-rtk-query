@@ -5,5 +5,5 @@ export * from './Container/Container';
 export * from './Footer/Footer';
 
 // if export default
-export { default as ContactForm } from './ContactForm/ContactForm.jsx';
+export { default as ContactForm } from './ContactForm/ContactForm';
 export { default as Header } from './Header/Header';
